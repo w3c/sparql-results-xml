@@ -8,7 +8,7 @@
 #
 
 namespace local = ""
-namespace res = "http://www.w3.org/2005/SPARQL/results#"
+namespace res = "http://www.w3.org/2005/sparql-results#"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 datatypes xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
 
