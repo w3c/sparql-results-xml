@@ -364,15 +364,15 @@ span.cancast:hover { background-color: #ffa;
 <!-- BODY -->
     <section id="introduction">
   <h2>Introduction</h2>
-  <p>The <cite><a href="http://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/">SPARQL Query Language for RDF</a></cite> <a href="#ref-sparql-query">[SPARQL-QUERY]</a> defines several <em>Query
-  Result Forms</em> (<a href="http://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/#QueryForms">SPARQL Query section 10</a>). This document defines a <a href="#defn-srd">SPARQL Results
-  Document</a> that encodes the variable binding query results from <code>SELECT</code> queries (<a href="http://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/#select">SPARQL Query section
-  10.2</a>) and boolean query results from <code>ASK</code> queries (<a href="http://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/#ask">SPARQL Query section 10.5</a>) in <a href=
-  "http://www.w3.org/TR/2004/REC-xml-20040204/">XML</a> @@fixupref XML@@.</p>
+  <p>The [[[SPARQL12-QUERY]]] defines several <em>Query
+  Result Forms</em> (<a data-cite="SPARQL12-QUERY#QueryForms">SPARQL Query section 10</a>). This document defines a <a href="#defn-srd">SPARQL Results
+  Document</a> that encodes the variable binding query results from <code>SELECT</code> queries (<a data-cite="SPARQL12-QUERY#select">SPARQL Query section
+  10.2</a>) and boolean query results from <code>ASK</code> queries (<a data-cite="SPARQL12-QUERY#ask">SPARQL Query section 10.5</a>) in <a data-cite=
+  "XML#">XML</a>.</p>
   <p>
     There are two other results formats which follow a similar design but do not use XML: 
-    <a href="http://www.w3.org/TR/sparql11-results-json/">SPARQL 1.2 Query Results JSON Format</a> @@fixup@@ and 
-    <a href="http://www.w3.org/TR/sparql11-results-csv-tsv/">SPARQL 1.2 Query Results CSV and TSV Formats</a> @@fixup@@.
+    [[[SPARQL12-RESULTS-JSON]]] and 
+    [[[SPARQL12-RESULTS-CSV-TSV]]].
   </p>
     </section>
       
@@ -399,8 +399,8 @@ span.cancast:hover { background-color: #ffa;
     <h3>Header</h3>
     <p>The <code>head</code> element is the first child element of the <code>sparql</code> element.</p>
     <p>For a variable binding query result, <code>head</code> must contain a sequence of elements describing the set of 
-      <a href="http://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/#defn_QueryVariable">Query Variable</a> names in the 
-      <a href="http://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/#defn_sparqlSolutionSequence">Solution Sequence</a> (here called query results).
+      <a data-cite="SPARQL12-QUERY#defn_QueryVariable">Query Variable</a> names in the 
+      <a data-cite="SPARQL12-QUERY#defn_sparqlSolutionSequence">Solution Sequence</a> (here called query results).
     </p>
     <p>The order of the variable names in the sequence is the order of the variable names given to the argument of the <code>SELECT</code> statement in the SPARQL query. If <code>SELECT *</code> is
       used, the order of the names is undefined.</p>
@@ -445,7 +445,7 @@ span.cancast:hover { background-color: #ffa;
         <section id="vb-results">
   <h4>Variable Binding Results</h4>
   <p>The <code>results</code> element contains the complete sequence of query results.</p>
-  <p>For each <a href="http://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/#defn_sparqlSolutionMapping">Query Solution</a> in the query results, a <code>result</code> child-element of
+  <p>For each <a data-cite="SPARQL12-QUERY#defn_sparqlSolutionMapping">Query Solution</a> in the query results, a <code>result</code> child-element of
   <code>results</code> is added giving a document like:</p>
   <pre>&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"&gt;
@@ -462,7 +462,7 @@ span.cancast:hover { background-color: #ffa;
 &lt;/sparql&gt;
 </pre>
   <p>Each <code>result</code> element corresponds to one <em>Query Solution</em> in a result and contains child elements (in no particular order) for each <em>Query Variable</em> that appears in the
-  solution. It is used to record how the query variables bind to <a href="http://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/#defn_RDFTerm">RDF Term</a>s.</p>
+  solution. It is used to record how the query variables bind to <a data-cite="SPARQL12-QUERY#defn_RDFTerm">RDF Term</a>s.</p>
   <p>Each binding inside a solution is written as an element <code>binding</code> as a child of <code>result</code> with the query variable name as the value of the <code>name</code> attribute. So
   for a result binding two variables <em>x</em> and <em>hpage</em> it would look like:</p>
   <pre>&lt;?xml version="1.0"?&gt;
@@ -587,9 +587,9 @@ span.cancast:hover { background-color: #ffa;
   <h2>XML Schemas</h2>
   <p>There are normative XML schemas provided in the following formats:</p>
   <ol>
-    <li>RELAX NG<a href="#ref-relaxng">[RELAXNG]</a> Compact<a href="#ref-relaxng-nx">[RELAXNG-COMPACT]</a> in <a href="http://www.w3.org/2007/SPARQL/result.rnc">result.rnc</a></li>
+    <li>RELAX NG [[RELAXNG]] Compact [[RELAXNG-COMPACT]] in <a href="http://www.w3.org/2007/SPARQL/result.rnc">result.rnc</a></li>
     <li>RELAX NG XML in <a href="http://www.w3.org/2007/SPARQL/result.rng">result.rng</a></li>
-    <li>W3C XML Schema<a href="#ref-xmlschema-1">[XMLSCHEMA-1]</a> in <a href="http://www.w3.org/2007/SPARQL/result.xsd">result.xsd</a><br>
+    <li>W3C XML Schema [[XMLSCHEMA-1]] in <a href="http://www.w3.org/2007/SPARQL/result.xsd">result.xsd</a><br>
     Note: this schema is machine-generated from the RELAX NG XML schema.</li>
   </ol>
   <p>If W3C XML Schema is used, an <code>xsi:schemaLocation</code> attribute can be used pointing to the schema as follows:</p>
@@ -624,14 +624,14 @@ span.cancast:hover { background-color: #ffa;
       <dt>Required parameters:<br></dt>
       <dd>None</dd>
       <dt>Optional parameters:<br></dt>
-      <dd>"charset": This parameter has identical semantics to the charset parameter of the "application/xml" media type as specified in <a href="#mime-rfc-3023">[RFC3023]</a>, section 3.2.</dd>
+      <dd>"charset": This parameter has identical semantics to the charset parameter of the "application/xml" media type as specified in [[RFC3023]], section 3.2.</dd>
       <dt>Encoding considerations:<br></dt>
-      <dd>Identical to those of "application/xml" as specified in <a href="#mime-rfc-3023">[RFC3023]</a>, section 3.2.</dd>
+      <dd>Identical to those of "application/xml" as specified in [[RFC3023]], section 3.2.</dd>
       <dt>Security considerations:<br></dt>
       <dd>
-        <p>SPARQL query results uses URIs. See Section 7 of <a href="#mime-rfc-3986">[RFC3986]</a>.</p>
-        <p>SPARQL query results uses IRIs. See Section 8 of <a href="#mime-rfc-3987">[RFC3987]</a>.</p>
-        <p>As this media type uses the "+xml" convention, it shares the same security considerations as described in <a href="#mime-rfc-3023">[RFC3023]</a>, section 10.</p>
+        <p>SPARQL query results uses URIs. See Section 7 of [[RFC3986]].</p>
+        <p>SPARQL query results uses IRIs. See Section 8 of [[RFC3987]].</p>
+        <p>As this media type uses the "+xml" convention, it shares the same security considerations as described in [[RFC3023]], section 10.</p>
       </dd>
       <dt>Interoperability considerations:<br></dt>
       <dd>There are no known interoperability issues.</dd>
@@ -641,13 +641,13 @@ span.cancast:hover { background-color: #ffa;
       <dd>No known applications currently use this media type.</dd>
       <dt>Additional information:<br></dt>
       <dt>Magic number(s):<br></dt>
-      <dd>As specified for "application/xml" in <a href="#mime-rfc-3023">[RFC3023]</a>, section 3.2.</dd>
+      <dd>As specified for "application/xml" in [[RFC3023]], section 3.2.</dd>
       <dt>File extension(s):<br></dt>
       <dd>".srx"</dd>
       <dt>Fragment identifiers:<br></dt>
-      <dd>Identical to that of "application/xml" as described in RFC 3023 <a href="#mime-rfc-3023">[RFC3023]</a>, section 5.</dd>
+      <dd>Identical to that of "application/xml" as described in [[RFC3023]], section 5.</dd>
       <dt>Base URI:<br></dt>
-      <dd>As specified in <a href="#mime-rfc-3023">[RFC3023]</a>, section 6.</dd>
+      <dd>As specified in [[RFC3023]], section 6.</dd>
       <dt>Macintosh file type code(s):<br></dt>
       <dd>"TEXT"</dd>
       <dt>Person &amp; email address to contact for further information:<br></dt>
@@ -659,44 +659,7 @@ span.cancast:hover { background-color: #ffa;
       <dt>Author/Change controller:<br></dt>
       <dd>The SPARQL specification is a work product of the World Wide Web Consortium's RDF Data Access Working Group. The W3C has change control over these specifications.</dd>
     </dl>
-    <h3><span class="doc-ref" id="mime-references">References</span></h3>
-    <p>[<span class="doc-ref" id="mime-rfc-3023">[RFC3023]</span> Murata, M., St. Laurent, S., and D. Kohn, "XML Media Types", RFC 3023, January 2001.</p>
-    <p><span class="doc-ref" id="mime-rfc-3986">[RFC3986]</span> Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform Resource Identifier (URI): Generic Syntax", STD 66, RFC 3986, January 2005.</p>
-    <p><span class="doc-ref" id="mime-rfc-3987">[RFC3987]</span> Duerst, M. and M. Suignard, "Internationalized Resource Identifiers (IRIs)", RFC 3987, January 2005.</p>
   </div>
-    </section>
-
-    <section id="references">
-  <h2>References</h2>
-  <dl class="bib">
-    <dt><span class="doc-ref" id="ref-xml">[XML]</span></dt>
-    <dd><cite><a href="http://www.w3.org/TR/2004/REC-xml-20040204/">Extensible Markup Language (XML) 1.0, Third Edition</a></cite>, T. Bray, J. Paoli, C.M. Sperberg-McQueen, E. Maler, F. Yergeau,
-    Editors, W3C Recommendation, 4 February 2004. This document is http://www.w3.org/TR/2004/REC-xml-20040204 . The <a href="http://www.w3.org/TR/REC-xml/" title="Latest version of XML">latest
-    version</a> is available at http://www.w3.org/TR/REC-xml .</dd>
-    <dt><span class="doc-ref" id="ref-sparql-query">[SPARQL-QUERY]</span></dt>
-    <dd><cite><a href="http://www.w3.org/TR/2013/REC-sparql11-query-20130321">SPARQL 1.2 Query Language</a></cite>, S. Harris, A. Seaborne, Editors, W3C Recommendation, 21 March 2013,
-    http://www.w3.org/TR/2013/REC-sparql11-query-20130321. <a href="http://www.w3.org/TR/sparql11-query/" title="Latest version of SPARQL 1.2 Query Language">Latest version</a> available at
-    http://www.w3.org/TR/sparql11-query.</dd>
-    <dt><span class="doc-ref" id="ref-relaxng">[RELAXNG]</span></dt>
-    <dd><cite><a href="http://www.oasis-open.org/committees/relax-ng/spec-20011203.html">RELAX NG Specification</a></cite>, James Clark and MURATA Makoto, Editors, OASIS Committee Specification, 3
-    December 2001. This document is http://www.oasis-open.org/committees/relax-ng/spec-20011203.html . The <a href="http://www.oasis-open.org/committees/relax-ng/spec.html" title=
-    "Latest version of RELAX NG Specification">latest version</a> is available at http://www.oasis-open.org/committees/relax-ng/spec.html .</dd>
-    <dt><span class="doc-ref" id="ref-relaxng-nx">[RELAXNG-COMPACT]</span></dt>
-    <dd><cite><a href="http://www.oasis-open.org/committees/relax-ng/compact-20021121.html">RELAX NG Compact Syntax</a></cite>, James Clark, Editor. OASIS Committee Specification, 21 November 2002.
-    This document is http://www.oasis-open.org/committees/relax-ng/compact-20021121.html .</dd>
-    <dt><span class="doc-ref" id="ref-xmlschema-1">[XMLSCHEMA-1]</span></dt>
-    <dd><cite><a href="http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/">XML Schema Part 1: Structures Second Edition</a></cite>, D. Beech, N. Mendelsohn, M. Maloney, H. S. Thompson, Editors, W3C
-    Recommendation, 28 October 2004. This document is http://www.w3.org/TR/2004/REC-xmlschema-1-20041028/ . The <a href="http://www.w3.org/TR/xmlschema-1/" title=
-    "Latest version of XML Schema Part 1: Structures Second Edition">latest version</a> is available at http://www.w3.org/TR/xmlschema-1/ .</dd>
-    <dt><span class="doc-ref" id="ref-srj">[SRJ]</span></dt>
-    <dd><cite><a href="http://www.w3.org/TR/2013/REC-sparql11-results-json-20130321">SPARQL 1.2 Query Results JSON Format</a></cite>, A. Seaborne, Editor, W3C Recommendation, 21 March 2013,
-    http://www.w3.org/TR/2013/REC-sparql11-results-json-20130321. <a href="http://www.w3.org/TR/sparql11-results-json/" title="Latest version of SPARQL 1.2 Query Results JSON Format">Latest
-    version</a> available at http://www.w3.org/TR/sparql11-results-json.</dd>
-    <dt><span class="doc-ref" id="ref-src">[SRC]</span></dt>
-    <dd><cite><a href="http://www.w3.org/TR/2013/REC-sparql11-results-csv-tsv-20130321">SPARQL 1.2 Query Results CSV and TSV Formats</a></cite>, A. Seaborne, Editor, W3C Recommendation, 21 March
-    2013, http://www.w3.org/TR/2013/REC-sparql11-results-csv-tsv-20130321. <a href="http://www.w3.org/TR/sparql11-results-csv-tsv/" title=
-    "Latest version of SPARQL 1.2 Query Results CSV and TSV Formats">Latest version</a> available at http://www.w3.org/TR/sparql11-results-csv-tsv.</dd>
-  </dl>
     </section>
 <!-- BODY -->
     <section id="privacy">
