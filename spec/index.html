@@ -499,8 +499,17 @@ span.cancast:hover { background-color: #ffa;
     <dd><code>&lt;binding&gt;&lt;literal datatype="</code><em>D</em><code>"&gt;</code><em>S</em><code>&lt;/literal&gt;&lt;/binding&gt;</code></dd>
     <dt>Blank Node label <em>I</em><br></dt>
     <dd><code>&lt;binding&gt;&lt;bnode&gt;</code><em>I</em><code>&lt;/bnode&gt;&lt;/binding&gt;</code></dd>
+    <dt>Quoted Triple, with subject <em>S</em>, predicate <em>P</em>, object <em>O</em><br></dt>
+    <dd><code>&lt;binding&gt;<br />
+&nbsp;&nbsp;&lt;triple&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;subject&gt;</code><em>S</em><code>&lt;/subject&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;predicate&gt;</code><em>P</em><code>&lt;/predicate&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;object&gt;</code><em>O</em><code>&lt;/object&gt;<br />
+&nbsp;&nbsp;&lt;/triple&gt;<br />
+&lt;/binding&gt;</code></dd>
   </dl>
   <p>If, for a particular solution, a variable is <em>unbound</em>, no <code>binding</code> element for that variable is included in the <code>result</code> element.</p>
+  <p><em>S</em>, <em>P</em>, and <em>O</em> in Quoted Triples are encoded recursively, using the same format, without the enclosing <code>&lt;binding&gt;</code> tag</p>
   <p><strong>Note:</strong> The blank node label <em>I</em> is scoped to the result set XML document and need not have any association to the blank node label for that RDF Term in the query
   graph.</p>
   <p>An example of a query solution encoded in this format is as follows:</p>
@@ -514,6 +523,7 @@ span.cancast:hover { background-color: #ffa;
     &lt;variable name="age"/&gt;
     &lt;variable name="mbox"/&gt;
     &lt;variable name="friend"/&gt;
+    &lt;variable name="quoted"/&gt;
   &lt;/head&gt;
 
   &lt;results&gt;
@@ -533,6 +543,19 @@ span.cancast:hover { background-color: #ffa;
       &lt;/binding&gt;
       &lt;binding name="mbox"&gt;
         &lt;uri&gt;mailto:bob@work.example.org&lt;/uri&gt;
+      &lt;/binding&gt;
+      &lt;binding name="quoted"&gt;
+        &lt;triple&gt;
+            &lt;subject&gt;
+                &lt;uri&gt;http://example.org/alice&lt;/uri&gt;
+            &lt;/subject&gt;
+            &lt;predicate&gt;
+                &lt;uri&gt;http://example.org/name&lt;/uri&gt;
+            &lt;/predicate&gt;
+            &lt;object&gt;
+                &lt;literal datatype="http://www.w3.org/2001/XMLSchema#string"&gt;Alice&lt;/literal&gt;
+            &lt;/object&gt;
+        &lt;/triple&gt;
       &lt;/binding&gt;
     &lt;/result&gt;
 
