@@ -11,7 +11,6 @@
     <variable name="age"/>
     <variable name="blurb"/>
     <variable name="friend"/>
-    <variable name="quoted"/>
 
     <link href="example.rq" />
   </head>
@@ -25,19 +24,6 @@
       <binding name="mbox"><literal></literal></binding>
       <binding name="friend"><bnode>r2</bnode></binding>
       <binding name="blurb"><literal datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">&lt;p xmlns="http://www.w3.org/1999/xhtml"&gt;My name is &lt;b&gt;alice&lt;/b&gt;&lt;/p&gt;</literal></binding>
-      <binding name="quoted">
-        <triple>
-          <subject>
-              <uri>http://example.org/alice</uri>
-          </subject>
-          <predicate>
-              <uri>http://example.org/name</uri>
-          </predicate>
-          <object>
-              <literal datatype="http://www.w3.org/2001/XMLSchema#string">Alice</literal>
-          </object>
-        </triple>
-      </binding>
     </result>
 
     <result> 
@@ -47,19 +33,6 @@
       <binding name="mbox"><uri>mailto:bob@work.example.org</uri></binding>
       <binding name="age"><literal datatype="http://www.w3.org/2001/XMLSchema#integer">30</literal></binding>
       <binding name="friend"><bnode>r1</bnode></binding>
-      <binding name="quoted">
-        <triple>
-          <subject>
-              <uri>http://example.org/bob</uri>
-          </subject>
-          <predicate>
-              <uri>http://example.org/name</uri>
-          </predicate>
-          <object>
-              <literal datatype="http://www.w3.org/2001/XMLSchema#string">Bob</literal>
-          </object>
-        </triple>
-      </binding>
     </result>
 
   </results>

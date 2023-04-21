@@ -523,7 +523,6 @@ span.cancast:hover { background-color: #ffa;
     &lt;variable name="age"/&gt;
     &lt;variable name="mbox"/&gt;
     &lt;variable name="friend"/&gt;
-    &lt;variable name="quoted"/&gt;
   &lt;/head&gt;
 
   &lt;results&gt;
@@ -543,6 +542,31 @@ span.cancast:hover { background-color: #ffa;
       &lt;/binding&gt;
       &lt;binding name="mbox"&gt;
         &lt;uri&gt;mailto:bob@work.example.org&lt;/uri&gt;
+      &lt;/binding&gt;
+
+    ...
+  &lt;/results&gt;
+
+&lt;/sparql&gt;
+</pre>
+  <p>An example of a query solution that includes quoted triples is as follows:</p>
+  <pre>&lt;?xml version="1.0"?&gt;
+&lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"&gt;
+
+  &lt;head&gt;
+    &lt;variable name="x"/&gt;
+    &lt;variable name="name"/&gt;
+    &lt;variable name="quoted"/&gt;
+  &lt;/head&gt;
+
+  &lt;results&gt;
+
+    &lt;result&gt; 
+      &lt;binding name="x"&gt;
+        &lt;bnode&gt;r2&lt;/bnode&gt;
+      &lt;/binding&gt;
+      &lt;binding name="name"&gt;
+        &lt;literal xml:lang="en"&gt;Bob&lt;/literal&gt;
       &lt;/binding&gt;
       &lt;binding name="quoted"&gt;
         &lt;triple&gt;
@@ -593,6 +617,13 @@ span.cancast:hover { background-color: #ffa;
   <p>This XML can be transformed into XHTML using the sample XML Query script <a href="http://www.w3.org/2009/sparql/xml-results/result-to-html.xq">result-to-html.xq</a> giving <a href=
   "http://www.w3.org/2009/sparql/xml-results/output-xquery.html">output-xquery.html</a> or with XSLT sheet <a href=
   "http://www.w3.org/2009/sparql/xml-results/result-to-html.xsl">result-to-html.xsl</a> giving <a href="http://www.w3.org/2009/sparql/xml-results/output-xslt.html">output-xslt.html</a></p>
+      </section>
+
+      <section id="vb-quoted-examples">
+  <h3>Variable Binding Results Examples with Quoted Triples</h3>
+  <p>An example <code>SELECT</code> SPARQL Query in <a href="http://www.w3.org/2009/sparql/xml-results/example-quoted.rq">example-quoted.rq</a> operating on query graph Turtle/N3 data in <a href=
+  "http://www.w3.org/2009/sparql/xml-results/data.n3">data.n3</a> providing ordered variable binding query results written in XML in <a href=
+  "http://www.w3.org/2009/sparql/xml-results/output-quoted.srx">output-quoted.srx</a>. These results contain quoted triples.</p>
       </section>
 
       <section id="boolean-examples">
