@@ -462,7 +462,7 @@ span.cancast:hover { background-color: #ffa;
 &lt;/sparql&gt;
 </pre>
   <p>Each <code>result</code> element corresponds to one <em>Query Solution</em> in a result and contains child elements (in no particular order) for each <em>Query Variable</em> that appears in the
-  solution. It is used to record how the query variables bind to <a data-cite="SPARQL12-QUERY#defn_RDFTerm">RDF Term</a>s.</p>
+  solution. It is used to record how the query variables bind to <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF Term</a>.</p>
   <p>Each binding inside a solution is written as an element <code>binding</code> as a child of <code>result</code> with the query variable name as the value of the <code>name</code> attribute. So
   for a result binding two variables <em>x</em> and <em>hpage</em> it would look like:</p>
   <pre>&lt;?xml version="1.0"?&gt;
