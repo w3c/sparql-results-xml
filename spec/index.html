@@ -518,7 +518,7 @@ span.cancast:hover { background-color: #ffa;
     <dd><code>&lt;binding&gt;&lt;literal datatype="</code><em>D</em><code>"&gt;</code><em>S</em><code>&lt;/literal&gt;&lt;/binding&gt;</code></dd>
     <dt>Blank Node label <em>I</em><br></dt>
     <dd><code>&lt;binding&gt;&lt;bnode&gt;</code><em>I</em><code>&lt;/bnode&gt;&lt;/binding&gt;</code></dd>
-    <dt>Quoted Triple, with subject <em>S</em>, predicate <em>P</em>, object <em>O</em><br></dt>
+    <dt>Triple Term, with subject <em>S</em>, predicate <em>P</em>, object <em>O</em><br></dt>
     <dd><code>&lt;binding&gt;<br />
 &nbsp;&nbsp;&lt;triple&gt;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;subject&gt;</code><em>S</em><code>&lt;/subject&gt;<br />
@@ -528,7 +528,7 @@ span.cancast:hover { background-color: #ffa;
 &lt;/binding&gt;</code></dd>
   </dl>
   <p>If, for a particular solution, a variable is <em>unbound</em>, no <code>binding</code> element for that variable is included in the <code>result</code> element.</p>
-  <p><em>S</em>, <em>P</em>, and <em>O</em> in Quoted Triples are encoded recursively, using the same format, without the enclosing <code>&lt;binding&gt;</code> tag</p>
+  <p><em>S</em>, <em>P</em>, and <em>O</em> in Triple Terms are encoded recursively, using the same format, without the enclosing <code>&lt;binding&gt;</code> tag</p>
   <p><strong>Note:</strong> The blank node label <em>I</em> is scoped to the result set XML document and need not have any association to the blank node label for that RDF Term in the query
   graph.</p>
   <p>An example of a query solution encoded in this format is as follows:</p>
@@ -570,7 +570,7 @@ span.cancast:hover { background-color: #ffa;
 
 &lt;/sparql&gt;
 </pre>
-  <p>An example of a query solution that includes quoted triples is as follows:</p>
+  <p>An example of a query solution that includes triple terms is as follows:</p>
   <pre>&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
@@ -579,7 +579,7 @@ span.cancast:hover { background-color: #ffa;
   &lt;head&gt;
     &lt;variable name="x"/&gt;
     &lt;variable name="name"/&gt;
-    &lt;variable name="quoted"/&gt;
+    &lt;variable name="triple"/&gt;
   &lt;/head&gt;
 
   &lt;results&gt;
@@ -591,7 +591,7 @@ span.cancast:hover { background-color: #ffa;
       &lt;binding name="name"&gt;
         &lt;literal xml:lang="en"&gt;Bob&lt;/literal&gt;
       &lt;/binding&gt;
-      &lt;binding name="quoted"&gt;
+      &lt;binding name="triple"&gt;
         &lt;triple&gt;
             &lt;subject&gt;
                 &lt;uri&gt;http://example.org/alice&lt;/uri&gt;
@@ -642,11 +642,11 @@ span.cancast:hover { background-color: #ffa;
   "./result-to-html.xsl">result-to-html.xsl</a> giving <a href="./output-xslt.html">output-xslt.html</a></p>
       </section>
 
-      <section id="vb-quoted-examples">
-  <h3>Variable Binding Results Examples with Quoted Triples</h3>
-  <p>An example <code>SELECT</code> SPARQL Query in <a href="./example-quoted.rq">example-quoted.rq</a> operating on query graph Turtle/N3 data in <a href=
+      <section id="vb-triple-terms-examples">
+  <h3>Variable Binding Results Examples with Triple Terms</h3>
+  <p>An example <code>SELECT</code> SPARQL Query in <a href="./example-triple-terms.rq">example-triple-terms.rq</a> operating on query graph Turtle/N3 data in <a href=
   "./data.ttl">data.ttl</a> providing ordered variable binding query results written in XML in <a href=
-  "./output-quoted.srx">output-quoted.srx</a>. These results contain quoted triples.</p>
+  "./output-triple-terms.srx">output-triple-terms.srx</a>. These results contain triple terms.</p>
       </section>
 
       <section id="boolean-examples">
@@ -686,7 +686,7 @@ span.cancast:hover { background-color: #ffa;
       <ul>
         <li>The document title changed from "SPARQL Query Results XML Format (Second Edition)" to "SPARQL 1.2 Query Results XML Format"</li>
         <li>Add RNC, RNG, and XSD files</li>
-        <li>Allow quoted triples to be expressed in <a href="#vb-results" class="sectionRef"></a></li>
+        <li>Allow triple terms to be expressed in <a href="#vb-results" class="sectionRef"></a></li>
         <li>Use Media Type language instead of MIME Type in <a href="#mediatype" class="sectionRef"></a></li>
         <li>Support directional language-tagged strings in <a href="#vb-results" class="sectionRef"></a></li>
       </ul>
