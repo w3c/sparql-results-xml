@@ -1,9 +1,9 @@
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX ex: <http://ns.example.org/#>
 
-SELECT ?x ?name ?quoted
+SELECT ?x ?name ?triple
 FROM <data.n3>
 WHERE { ?x foaf:name ?name .
-        ?x ex:quoted ?quoted .
+        ?x ex:triple ?triple .
       }
 ORDER BY ?name
