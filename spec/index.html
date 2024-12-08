@@ -384,7 +384,7 @@ span.cancast:hover { background-color: #ffa;
       <section id="docElement">
   <h3>Document Element</h3>
   <p>The <a href="#defn-srd">SPARQL Results Document</a> begins with <code>sparql</code> document element in the <code>http://www.w3.org/2005/sparql-results#</code> namespace, written as follows:</p>
-  <pre>&lt;?xml version="1.0"?&gt;
+  <pre class="box xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -393,7 +393,7 @@ span.cancast:hover { background-color: #ffa;
 </pre>
   <p>Inside the <code>sparql</code> element are two sub-elements, <code>head</code> and a results element (either <code>results</code> or <code>boolean</code>) which must appear in that order.</p>
   <p>If no literals with base direction appear in the results, the <code>sparql</code> document element may be simplified as follows.</p>
-  <pre>&lt;?xml version="1.0"?&gt;
+  <pre class="box xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"&gt;
  ...
 &lt;/sparql&gt;
@@ -412,7 +412,7 @@ span.cancast:hover { background-color: #ffa;
       used, the order of the names is undefined.</p>
     <p>Inside the <code>head</code> element, the ordered sequence of variable names chosen are used to create empty child elements <code>variable</code> with the variable name as the value of an
       attribute <code>name</code> giving a document like this:</p>
-  <pre>&lt;?xml version="1.0"?&gt;
+  <pre class="box xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -433,7 +433,7 @@ span.cancast:hover { background-color: #ffa;
   <p>For any query result, <code>head</code> may also contain <code>link</code> child elements with an <code>href</code> attribute containing a relative URI that provides a link to some additional
   metadata about the query results. The relative URI is resolved against the in-scope base URI which is usually the query results format document URI. <code>link</code> elements must appear after any
   <code>variable</code> elements that are present.</p>
-  <pre>&lt;?xml version="1.0"?&gt;
+  <pre class="box xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -457,7 +457,7 @@ span.cancast:hover { background-color: #ffa;
   <p>The <code>results</code> element contains the complete sequence of query results.</p>
   <p>For each <a data-cite="SPARQL12-QUERY#defn_sparqlSolutionMapping">Query Solution</a> in the query results, a <code>result</code> child-element of
   <code>results</code> is added giving a document like:</p>
-  <pre>&lt;?xml version="1.0"?&gt;
+  <pre class="box xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -477,7 +477,7 @@ span.cancast:hover { background-color: #ffa;
   solution. It is used to record how the query variables bind to <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF Terms</a>.</p>
   <p>Each binding inside a solution is written as an element <code>binding</code> as a child of <code>result</code> with the query variable name as the value of the <code>name</code> attribute. So
   for a result binding two variables <em>x</em> and <em>hpage</em> it would look like:</p>
-  <pre>&lt;?xml version="1.0"?&gt;
+  <pre class="box xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -529,7 +529,7 @@ span.cancast:hover { background-color: #ffa;
   <p><strong>Note:</strong> The blank node label <em>I</em> is scoped to the result set XML document and need not have any association to the blank node label for that RDF Term in the query
   graph.</p>
   <p>An example of a query solution encoded in this format is as follows:</p>
-  <pre>&lt;?xml version="1.0"?&gt;
+  <pre class="box xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -568,7 +568,7 @@ span.cancast:hover { background-color: #ffa;
 &lt;/sparql&gt;
 </pre>
   <p>An example of a query solution that includes triple terms is as follows:</p>
-  <pre>&lt;?xml version="1.0"?&gt;
+  <pre class="box xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -614,7 +614,7 @@ span.cancast:hover { background-color: #ffa;
   <h4>Boolean Results</h4>
   <p>A boolean result is written as the element content of a <code>boolean</code> child-element of the <code>sparql</code> element directly after a <code>head</code>, containing either
   <code>true</code> or <code>false</code> as follows:</p>
-  <pre>&lt;?xml version="1.0"?&gt;
+  <pre class="box xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"&gt;
   ...  head ...
 
@@ -667,7 +667,7 @@ span.cancast:hover { background-color: #ffa;
     Note: this schema is machine-generated from the RELAX NG XML schema.</li>
   </ol>
   <p>If W3C XML Schema is used, an <code>xsi:schemaLocation</code> attribute can be used pointing to the schema as follows:</p>
-  <pre>&lt;?xml version="1.0"?&gt;
+  <pre class="box xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.w3.org/2005/sparql-results# http://www.w3.org/2007/SPARQL/result.xsd"&gt;
