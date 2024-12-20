@@ -605,6 +605,38 @@ span.cancast:hover { background-color: #ffa;
 
 &lt;/sparql&gt;
 </pre>
+
+  <p>
+    As an alternative to including the `xml:its` declaration in every result
+    set, the namespace can be declared on specific elements as needed:
+  </p>
+
+  <pre class="box xml">&lt;?xml version="1.0"?&gt;
+&lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"&gt;
+  &lt;head&gt;
+    &lt;variable name="animal"/&gt;
+  &lt;/head&gt;
+  &lt;results&gt;
+    &lt;result&gt;
+      &lt;binding name="animal"&gt;
+        &lt;literal xmlns:its="http://www.w3.org/2005/11/its" its:version="2.0"
+                 xml:lang="ar" its:dir="rtl"&gt;قطة&lt;/literal&gt;
+      &lt;/binding&gt;
+    &lt;/result&gt;
+    &lt;result&gt;
+      &lt;binding name="animal"&gt;
+        &lt;literal xml:lang="en"&gt;cat&lt;/literal&gt;
+      &lt;/binding&gt;
+    &lt;/result&gt;
+    &lt;result&gt;
+      &lt;binding name="animal"&gt;
+        &lt;literal xmlns:its="http://www.w3.org/2005/11/its" its:version="2.0"
+                 xml:lang="fr" its:dir="ltr"&gt;chat&lt;/literal&gt;
+      &lt;/binding&gt;
+    &lt;/result&gt;
+  &lt;/results&gt;
+&lt;/sparql&gt;
+</pre>
         </section>
 
         <section id="boolean-results">
