@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
     <title>SPARQL 1.2 Query Results XML Format</title>
 
     <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
@@ -46,297 +47,6 @@
         lint: { "no-unused-dfns": false }
       };
     </script>
-
-    <style>
-      /* @import url("local.css"); */
-      /* Inlined to make preview work */
-
-/* CSS For SPARQL Query */
-
-/* In-progress working draft artifacts - to be removed eventually */
-  .issue	{ background-color: #fdd;
-                  font-size: 88% ; }
-  .add		{ background-color: #7fff7f }
-  .remove	{ background-color: #ff7f7f }
-ul.issue	{}
-  .issueBlock	{ margin: 1em 4em 1em 2.5em ; /* Top Right Bottom Left */
-                  padding: 1ex;
-	          /*overflow: auto;*/
-                  page-break-inside: avoid ; }
-  .issueTopic	{ font-weight: bold ; }
-
- .todo		{ font-size: 80% ; color: #444 ; }
-p.todo		{}
-
-.wgNote	{ border: 0.2em solid red;
-      padding: 0.5em ;
-      margin: 1em 4em 1em 2em ; }
-
-.box     { border: thin solid #888888;
-           page-break-inside: avoid ;
-           background-color: #F8F8F8 ; padding:1em ;
-           margin-left:0 ; margin-right: 2ex; 
-           margin-top: 0.1ex ; margin-bottom: 0.1ex ;
-         }
-
-/* Misc WD stuff */
-span.cvs-id     {color: gray; font-size:80%; display: block; }
-
-/* == General Tag Treatment == */
-pre		 { margin: 1em 4em 1em 2.5em ; /* Top Right Bottom Left */
-                   padding: 1ex;
-	           /*overflow: auto;*/
-                   page-break-inside: avoid ; }
-
-/* Tables */
-table, td	{ text-align: left; }
-td, th   { border-style: solid;
-                  border-width: 1px;
-                  border-color: black;
-                  border-bottom-color: gray;
-                  border-right-color: gray; }
-td.annotation, th.annotation { border-style: none; border-bottom-style: dotted; }
-table.plain	{ border-spacing: 0px; padding: 0px ; border-collapse: collapse ; }
-                  /* cellpadding="0" cellspacing="1" style="border-collapse: collapse */
-
-
-th.major	{ background-color: #005a9c;
-                  color: white; }
-.subHeading	{ text-align: left;
-                  background-color: #CCCCCC; }
-th, td		{ padding: 3px; }
-td		{ font-size: 85%; }
-th a:link	{ text-decoration: none; }
-th a:hover	{ background-color:#FFFF99;
-                  text-decoration: underline; }
-
-/* == Prototypes == */
-pre.prototype	{ background-color:#f7f8ff;
-                  border:thin solid #8888aa;
-                  margin: 1em 4em 1em 0em ; }
-.return, .type	{ color: #177 }
-
-/* Definitions */
-.defn		{ margin-left:0 ; margin-right: 2ex; 
-                  margin-top: 0.1ex ; margin-bottom: 0.1ex ;
-                  /*border: double 1px #888888; *//* Buggy */
-                  border: thin solid #888888;
-                  padding: 1ex 2ex 0.5ex 2ex ; /* top, right, bottom, left */
-                  page-break-inside: avoid ;
-                  background-color: #F0F8F8 ; }
-div.defn p	{ margin-top: 1ex ; margin-bottom: 1.5ex ;}
-div.defn ul	{ margin-top: 1ex ; margin-bottom: 1.5ex ; }
-@media print	{ .defn { margin: 1em 1em 1em 1em ; } }
-span.definedTerm	{font-weight: bold;}
-
-div.grammarExtract
-                { border: thin solid #888888;
-                  padding: 1ex 2ex 1ex 2ex ; /* top, right, bottom, left */
-                  margin: 1em 6em 1em 2em ; 
-                  page-break-inside: avoid ;
-                  background-color: #F8F8F8 ; }
-
-pre.codeBlock  { font-family:monospace ; page-break-inside: avoid ; 
-                 margin: 0 ;
-	         margin-right: 2ex ;
-                 border: thin solid #888888; }
-
-
-
-
-/* Examples */
-pre.data	{ border: thin solid #88AA88;
-                  background-color: #E8F0E8;
-                  margin: 1em 4em 1em 0em ; }
-
-pre.dataExcerpt	{ border: thin solid #88AA88;
-                  background-color: #E8F0E8;
-                  margin: 1em 4em 1em 0em ; }
-/* Example Queries */
-.query          { background-color:#f7f8ff; }
-.queryExcerpt   { background-color:#f7f8ff; }
-pre.query	{ border:thin solid #8888aa;
-                  margin: 1em 4em 1em 0em ; }
-/* Example Results */
-.result		{ border: thin solid  #888888 ;
-                  background-color: #F0F0F0 ; }
-pre.resultGraph	{  margin: 0em 0em 0em 0em ; /* Top Right Bottom Left */
-                   padding: 0ex;
-                   font-size: 100% ;
-                   page-break-inside: avoid ; }
-pre.resultSet	{  margin: 0em 0em 0em 0em ; /* Top Right Bottom Left */
-                   padding: 0ex;
-                   font-size: 100% ;
-                   page-break-inside: avoid ; }
-pre.resultAsk	{  margin: 0em 0em 0em 0em ; /* Top Right Bottom Left */
-                   padding: 0ex;
-                   font-size: 100% ;
-                   page-break-inside: avoid ; }
-pre.resultTurtle{  margin: 0em 0em 0em 0em ; /* Top Right Bottom Left */
-                   padding: 0ex;
-                   font-size: 100% ;
-                   page-break-inside: avoid ; }
-
-pre.result	{ margin: 1em 4em 1em 0em ; }
-
-div.result	{ font-family: monospace;
-                  margin:  1em 4em 1em 0em ;
-                  padding: 1ex ; }
-
-.result table	{ border-collapse: collapse; }
-.result table td{ border-width: 1px ;
-                  border-color : black ; 
-                  font-family: monospace ;
-                  empty-cells: show;
-                  padding-left: 1ex ; padding-right: 1ex ;
-                  vertical-align:top;
-                  text-align: left ; } 
-/*  spacing: 0 ;*/
-.result table th{ border-width: 1px ;
-                  font-family: monospace ;
-                  border-color: black ;
-                  empty-cells: show;
-                  padding-left: 1ex ; padding-right: 1ex ;
-                  vertical-align:top;
-                  text-align:center; } 
-
-/* Examples : Algebra */
-div.algExample {  border: thin solid #888888;
-                  page-break-inside: avoid ;
-                  padding:0.5em ; margin:0.5em ;
-                  margin-left: 2em ; margin-right: 2em ;
-                  font-family:monospace ; }
-
-div.algExample1 { padding:0.5em ; background-color: #F0F0FF ; }
-div.algExample2 { padding:0.5em ; margin-top: 0.5em ; background-color: #F0FFF0 ; }
-
-/* Grammar Mark-up */
-.operator	{ color: #3f3f5f;
-                  text-transform: uppercase; }
-.function	{ color: #3f3f5f;
-                }
-
-/* Tuned to cope with different browsers behaviours */
-div.grammarTable table	{ border-style: solid ;
-			  border-width: 1px ;
-			  border-color: #AAA ;
-			  border-spacing: 0px ; 
-			  border-collapse: collapse ; }
-
-div.grammarTable table * { border-left-width: 0px ;
-			   border-right-width: 0px ;
-			   border-color: #AAA ; } 
-
-div.grammarTable table * tr   { border-top-style: solid ;
-			  border-top-width: 1px ;
-			  border-top-color: #AAA ; } 
-
-.grammar	{ text-align: left ;
-                  vertical-align: top ; }
-.token		{ color: #3f3f5f; }
-table.FAndOTable .token		{ color: #00c; }
-table.FAndOTable .token:visited		{ color: #a0c; }
-.gRuleHead	{ font-style: italic ;
-                  font-family: monospace ; }
-.gRuleBody	{ font-family: monospace ; }
-.gRuleLabel	{ font-family: monospace ; }
-
-.code		{ font-family: monospace; font-size: 100%; }
-pre.code	{ font-family: monospace; font-size: 100%; margin: 0 ; }
-
-/* Table of Contents */
-.toc		{ text-indent: 0; }
-DIV.toc UL UL, DIV.toc OL OL {margin-left: 0}
-DIV.toc UL UL UL, DIV.toc OL OL OL {margin-left: 1em}
-DIV.toc UL UL UL UL, DIV.toc OL OL OL OL {margin-left: 0}
-LI.tocline1	{ font-weight: bold}
-LI.tocline2	{ font-weight: normal}
-LI.tocline4	{ font-style: italic}
-/* The border in the following rule crashes NN4 on fonts.html :-(
-DIV.subtoc	{ padding: 1em; border: solid black thin; margin: 1em 0;
-                  background: #ddd} */
-DIV.toc, UL.index, DT { text-align: left; }
-
-
-/* References to the Rdf Data Model */
-span.rdfDM	{ color: #11d; }
-
-
-/* Truth Table */
-  .truth	{ font-family: monospace; }
-  .error	{ color: #ff1f1f; }
-  table.truthTable td	{ text-align: center; font-family: monospace; }
-  table.truthTable th	{ background-color: #dfdfdf; }
-  table.truthTable tbody th	{ font-weight: normal; font-family: monospace; }
-
-/* Casting table */
-table.casting	{ font-size: x-small; }
-
-.castY	{ background-color: #7FFF7F;
-                  color: black; }
-
-.castN	{ background-color: #FF7F7F;
-                  color: black; }
-
-.castM	{ background-color: white;
-                  color: black; }
-
-span.cancast:hover { background-color: #ffa;
-                     color: black; }
-
-.SPARQLoperator	{ background-color: #FFFFbf; /* yellow */
-          }
-
-.owlnonterminal {
-    font-weight: bold;
-    font-family: sans-serif;
-    font-size: 95%;
-}
-.owlgrammar {
-    margin-top: 1ex;
-    margin-bottom: 1ex;
-    padding-left: 1ex;
-    padding-right: 1ex;
-    padding-top: 1ex;
-    padding-bottom: 0.6ex;
-    border: 1px dashed #2f6fab;
-    font-family: monospace;
-}
-
-      /* ReSpec */
-      dfn { font-style: normal ; }
-      /* ReSpec */
-
-  code           { font-family: monospace; }
-
-  div.constraint,
-  div.issue,
-  div.note,
-  div.notice     { margin-left: 2em; }
-
-  ol.enumar      { list-style-type: decimal; }
-  ol.enumla      { list-style-type: lower-alpha; }
-  ol.enumlr      { list-style-type: lower-roman; }
-  ol.enumua      { list-style-type: upper-alpha; }
-  ol.enumur      { list-style-type: upper-roman; }
-
-
-  div.exampleInner pre { margin-left: 1em;
-                       margin-top: 0em; margin-bottom: 0em}
-  div.exampleOuter {border: 4px double gray;
-                  margin: 0em; padding: 0em}
-  div.exampleInner { background-color: #d5dee3;
-                   border-top-width: 4px;
-                   border-top-style: double;
-                   border-top-color: #d3d3d3;
-                   border-bottom-width: 4px;
-                   border-bottom-style: double;
-                   border-bottom-color: #d3d3d3;
-                   padding: 4px; margin: 0em }
-  div.exampleWrapper { margin: 4px }
-  div.exampleHeader { font-weight: bold;
-                    margin: 4px}
-    </style>
   </head>
   <body>
     <section id="abstract">
@@ -359,7 +69,7 @@ span.cancast:hover { background-color: #ffa;
     <section id="introduction">
   <h2>Introduction</h2>
   <p>The [[[SPARQL12-QUERY]]] defines several <em>Query
-  Result Forms</em> (<a data-cite="SPARQL12-QUERY#QueryForms">SPARQL Query section 10</a>). This document defines a <a href="#defn-srd">SPARQL Results
+  Result Forms</em> (<a data-cite="SPARQL12-QUERY#QueryForms">SPARQL Query section 10</a>). This document defines a <a>SPARQL Results
   Document</a> that encodes the variable binding query results from <code>SELECT</code> queries (<a data-cite="SPARQL12-QUERY#select">SPARQL Query section
   10.2</a>) and boolean query results from <code>ASK</code> queries (<a data-cite="SPARQL12-QUERY#ask">SPARQL Query section 10.5</a>) in <a data-cite=
   "XML#">XML</a>.</p>
@@ -372,16 +82,15 @@ span.cancast:hover { background-color: #ffa;
       
     <section id="definition">
   <h2>Definition</h2>
-  <div class="defn">
-      <p><b>Definition:</b> <span class="doc-ref" id="defn-srd">SPARQL Results Document</span></p>
-      <p>A <span class="definedTerm">SPARQL Results Document</span> is an XML document that is valid with respect to either the RELAX NG XML Schema or the W3C XML Schema in <a href="#schemas">Section
-    4.</a></p>
-  </div>
-
+      <div class="def">
+        <p><b>Definition: SPARQL Results Document</b></p>
+        <p>A <dfn id="defn-srd">SPARQL Results Document</dfn> is an XML document that is valid with respect to either the RELAX NG XML Schema or the W3C XML Schema described in <a href="#schemas" class="sectionRef"></a>.
+        </p>
+      </div>
       <section id="docElement">
   <h3>Document Element</h3>
-  <p>The <a href="#defn-srd">SPARQL Results Document</a> begins with <code>sparql</code> document element in the <code>http://www.w3.org/2005/sparql-results#</code> namespace, written as follows:</p>
-  <pre class="box xml">&lt;?xml version="1.0"?&gt;
+  <p>The <a>SPARQL Results Document</a> begins with <code>sparql</code> document element in the <code>http://www.w3.org/2005/sparql-results#</code> namespace, written as follows:</p>
+  <pre class="xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -390,7 +99,7 @@ span.cancast:hover { background-color: #ffa;
 </pre>
   <p>Inside the <code>sparql</code> element are two sub-elements, <code>head</code> and a results element (either <code>results</code> or <code>boolean</code>) which must appear in that order.</p>
   <p>If no literals with base direction appear in the results, the <code>sparql</code> document element may be simplified as follows.</p>
-  <pre class="box xml">&lt;?xml version="1.0"?&gt;
+  <pre class="xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"&gt;
  ...
 &lt;/sparql&gt;
@@ -409,7 +118,7 @@ span.cancast:hover { background-color: #ffa;
       used, the order of the names is undefined.</p>
     <p>Inside the <code>head</code> element, the ordered sequence of variable names chosen are used to create empty child elements <code>variable</code> with the variable name as the value of an
       attribute <code>name</code> giving a document like this:</p>
-  <pre class="box xml">&lt;?xml version="1.0"?&gt;
+  <pre class="xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -430,7 +139,7 @@ span.cancast:hover { background-color: #ffa;
   <p>For any query result, <code>head</code> may also contain <code>link</code> child elements with an <code>href</code> attribute containing a relative URI that provides a link to some additional
   metadata about the query results. The relative URI is resolved against the in-scope base URI which is usually the query results format document URI. <code>link</code> elements must appear after any
   <code>variable</code> elements that are present.</p>
-  <pre class="box xml">&lt;?xml version="1.0"?&gt;
+  <pre class="xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -454,7 +163,7 @@ span.cancast:hover { background-color: #ffa;
   <p>The <code>results</code> element contains the complete sequence of query results.</p>
   <p>For each <a data-cite="SPARQL12-QUERY#defn_sparqlSolutionMapping">Query Solution</a> in the query results, a <code>result</code> child-element of
   <code>results</code> is added giving a document like:</p>
-  <pre class="box xml">&lt;?xml version="1.0"?&gt;
+  <pre class="xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -474,7 +183,7 @@ span.cancast:hover { background-color: #ffa;
   solution. It is used to record how the query variables bind to <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF Terms</a>.</p>
   <p>Each binding inside a solution is written as an element <code>binding</code> as a child of <code>result</code> with the query variable name as the value of the <code>name</code> attribute. So
   for a result binding two variables <em>x</em> and <em>hpage</em> it would look like:</p>
-  <pre class="box xml">&lt;?xml version="1.0"?&gt;
+  <pre class="xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -526,7 +235,7 @@ span.cancast:hover { background-color: #ffa;
   <p><strong>Note:</strong> The blank node label <em>I</em> is scoped to the result set XML document and need not have any association to the blank node label for that RDF Term in the query
   graph.</p>
   <p>An example of a query solution encoded in this format is as follows:</p>
-  <pre class="box xml">&lt;?xml version="1.0"?&gt;
+  <pre class="xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -565,7 +274,7 @@ span.cancast:hover { background-color: #ffa;
 &lt;/sparql&gt;
 </pre>
   <p>An example of a query solution that includes triple terms is as follows:</p>
-  <pre class="box xml">&lt;?xml version="1.0"?&gt;
+  <pre class="xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
   xmlns:its="http://www.w3.org/2005/11/its" 
   its:version="2.0"&gt;
@@ -611,7 +320,7 @@ span.cancast:hover { background-color: #ffa;
     set, the namespace can be declared on specific elements as needed:
   </p>
 
-  <pre class="box xml">&lt;?xml version="1.0"?&gt;
+  <pre class="xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"&gt;
   &lt;head&gt;
     &lt;variable name="animal"/&gt;
@@ -643,7 +352,7 @@ span.cancast:hover { background-color: #ffa;
   <h4>Boolean Results</h4>
   <p>A boolean result is written as the element content of a <code>boolean</code> child-element of the <code>sparql</code> element directly after a <code>head</code>, containing either
   <code>true</code> or <code>false</code> as follows:</p>
-  <pre class="box xml">&lt;?xml version="1.0"?&gt;
+  <pre class="xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"&gt;
   ...  head ...
 
@@ -696,7 +405,7 @@ span.cancast:hover { background-color: #ffa;
     Note: this schema is machine-generated from the RELAX NG XML schema.</li>
   </ol>
   <p>If W3C XML Schema is used, an <code>xsi:schemaLocation</code> attribute can be used pointing to the schema as follows:</p>
-  <pre class="box xml">&lt;?xml version="1.0"?&gt;
+  <pre class="xml">&lt;?xml version="1.0"?&gt;
 &lt;sparql xmlns="http://www.w3.org/2005/sparql-results#"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.w3.org/2005/sparql-results# http://www.w3.org/2007/SPARQL/result.xsd"&gt;
